@@ -1,5 +1,8 @@
-#!/usr/bin/python
-#coding=utf8
+# char_frequency_analyser.py
+# A simple tool to fetch and display the number of appearance of each character in a text file
+#
+# Result can then be used to crack a really weak cipher based on a simple substitution algorithm 
+# using frequential analyis
 
 from collections import Counter
 import sys, getopt, string
