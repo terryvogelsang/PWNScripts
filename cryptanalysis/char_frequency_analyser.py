@@ -1,4 +1,3 @@
-# char_frequency_analyser.py
 # A simple tool to fetch and display the number of appearance of each character in a text file
 #
 # Result can then be used to crack a really weak cipher based on a simple substitution algorithm 
