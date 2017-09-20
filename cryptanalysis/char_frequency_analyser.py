@@ -47,7 +47,7 @@ if __name__ == "__main__":
     # options and arguments fetching
     args = fetchOptsAndArgs(sys.argv[1:])
     
-    # if first args in not empty
+    # if first args is not empty
     if args[0]: 
 
         try:
