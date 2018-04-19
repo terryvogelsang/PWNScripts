@@ -1,14 +1,34 @@
-# Extractor : HTML Sources Extraction
+# Extractor : An HTML Sources Recon Tool
 
 Extractor is a simple tool to retrieve interesting parts of an HTML source code during recon.
 
-Usage is the following :
+Currently retrieved informations are the following :
+
+* `<a>` tags href attributes values
+* `<img>` tags src attributes values
+* `<script>` tags src attributes values
+* Comments
+
+
+## Usage
+
+```
+usage: extractor.py [-h] -u URLS [URLS ...] [-c COOKIES]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -u URLS [URLS ...], --urls URLS [URLS ...]
+                        <Required> Set URLs to check
+  -c COOKIES, --cookies COOKIES
+```
+
+## Example
 
 ```
 python3 extractor.py -u google.com
 ```
 
-This gives us : 
+Output : 
 
 ```
 ====================================================================================
