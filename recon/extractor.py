@@ -20,10 +20,6 @@ except ImportError:
     import urllib2
 
 from time import sleep
-from multiprocessing import Process, Queue
-
-ABSOLUTE_URL_REGEX='(http|ftp|https)://([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?'
-RELATIVE_URL_REGEX='((^(http[s]?:\/\/)?([w]{3}[.])?(([a-z0-9\.]+)+(com|php))(((\/[a-z0-9]+)*(\/[a-z0-9]+\/?))*([a-z0-9]+[.](html|php|gif|png|jpg))?)$)|((^([.]\/)?((([a-z0-9]+)\/?)+|(([a-z0-9]+)\/)+([a-z0-9]+[.](html|php|gif|png|jpg))))$))'
 
 class startThread(threading.Thread):
     def __init__(self, target, cookies):
@@ -81,6 +77,10 @@ def searchURLs(target, cookies):
         sources = res.text
         soup = BeautifulSoup(sources,"html.parser")
 
+        print("====================================================================================")
+        print_info("Summary for target {}".format(target))
+        print("====================================================================================\n\n")
+
         # Check for URLs in Sources
         href_tags = soup.find_all('a', href=True)
         img_tags = soup.find_all('img', src=True)
@@ -89,55 +89,45 @@ def searchURLs(target, cookies):
 
         # <a> href Print
         if not href_tags:
-            print_fail("No <a> tag with href attribute found in "+target+" HTML Sources !\n")
+            print_fail("No <a> tag with href attribute found in "+target+" HTML Sources !\n\n")
         else:
-            print("============================================================================================================================================================")
-            print_info("Found {} <a> tags with href attribute from {}".format(len(href_tags), target))
-            print("============================================================================================================================================================")
+            print_info("Found {} <a> tags with href attribute from {}\n".format(len(href_tags), target))
             for a in href_tags:
                 print_good (a['href'])
             print("\n")
-
         
         # <img> src Print
         if not img_tags:
-            print_fail("No <img> tag with src attribute found in "+target+" HTML Sources !\n")
+            print_fail("No <img> tag with src attribute found in "+target+" HTML Sources !\n\n")
         else:
-            print("============================================================================================================================================================")
-            print_info("Found {} <img> tags with src attribute from {}".format(len(img_tags), target))
-            print("============================================================================================================================================================")
+            print_info("Found {} <img> tags with src attribute from {}\n".format(len(img_tags), target))
             for img in img_tags:
                 print_good (img['src'])
             print("\n")
 
         # <script> src Print
         if not script_tags:
-            print_fail("No <script> tag with src attribute found in "+target+" HTML Sources !\n")
+            print_fail("No <script> tag with src attribute found in "+target+" HTML Sources !\n\n")
         else:
-            print("============================================================================================================================================================")
-            print_info("Found {} <script> tags with src attribute from {}".format(len(script_tags), target))
-            print("============================================================================================================================================================")
-
+            print_info("Found {} <script> tags with src attribute from {}\n".format(len(script_tags), target))
             for script in script_tags:
                 print_good (script['src'])
             print("\n")
 
         # Comments Print
         if not comments:
-            print_fail("No comment tag found in "+target+" HTML Sources !\n")
+            print_fail("No comment tag found in "+target+" HTML Sources !\n\n")
         else:
-            print("============================================================================================================================================================")
-            print_info("Found {} comments from {}".format(len(comments), target))
-            print("============================================================================================================================================================")
-
+            print_info("Found {} comments from {}\n".format(len(comments), target))
             for comment in comments:
                 print_good ("<!-- {} -->".format(str(comment)))
-            print("\n")
 
     except Exception as e:
         print_fail("Exception: " + str(e))
         exc_type, exc_value, exc_traceback = sys.exc_info()
         traceback.print_tb(exc_traceback, limit=1, file=sys.stdout)
+    
+    print("\n\n")
 
 if __name__ == '__main__':
     
