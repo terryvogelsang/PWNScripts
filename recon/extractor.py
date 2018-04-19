@@ -1,25 +1,12 @@
 #!/usr/bin/env python3
 
-import argparse
-import os
-import requests
-import re
-import sys
-import socket
-import time
 import threading
-import socket
-import traceback
+import argparse
 import json
-from bs4 import BeautifulSoup
-from bs4 import Comment
-
-try: # For Python 3.0 and later
-    import urllib.request
-except ImportError:
-    import urllib2
-
-from time import sleep
+import sys
+import traceback
+import requests
+from bs4 import BeautifulSoup, Comment
 
 class startThread(threading.Thread):
     def __init__(self, target, cookies):
@@ -55,19 +42,6 @@ def print_fail(s):
 def print_info(s):
     print(blue('[+]') + ' ' + s)
 
-def readuntil(s, stop):
-    res = ''
-    while not res.endswith(stop):
-        c = s.recv(1)
-        if c == '':
-            raise Exception("EOF")
-        res += c
-    return res
-
-def readline(s):
-    return readuntil(s, "\n")
-
-# submits the data / flags to our own server
 def searchURLs(target, cookies):
     try:
 
