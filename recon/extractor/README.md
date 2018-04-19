@@ -1,4 +1,4 @@
-#Extractor : An HTML Sources Recon Tool
+# Extractor : An HTML Sources Recon Tool
 
 Extractor is a simple tool to retrieve interesting parts of an HTML source code during recon.
 
@@ -10,7 +10,8 @@ Currently retrieved informations are the following :
 * Comments
 
 
-##Usage
+
+## Usage
 
 ```
 usage: extractor.py [-h] -u URLS [URLS ...] [-c COOKIES]
@@ -22,13 +23,15 @@ optional arguments:
   -c COOKIES, --cookies COOKIES
 ```
 
-##Example
+
+
+## Example
 
 ```
 python3 extractor.py -u google.com
 ```
 
-Output : 
+### Output : 
 
 ```
 ====================================================================================
