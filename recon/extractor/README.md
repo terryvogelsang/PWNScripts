@@ -79,8 +79,14 @@ python3 extractor.py -u google.com
 
 ```
 
-Extractor can also be used with authentication :
+Extractor can also be used with cookies:
 
 ```
-python3 extractor.py -u example.com mydomain.com -c '{"sessionID":"sessiontoken"}'
+python3 extractor.py -u example.com -c '{"sessionID":"sessiontoken"}'
+```
+
+And with multiple domains :
+
+```
+python3 extractor.py -u example.com mydomain.com
 ```
